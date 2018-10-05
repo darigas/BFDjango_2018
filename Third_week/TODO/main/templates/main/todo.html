@@ -2,17 +2,24 @@
 
 {% block content %}
 
-    <button type = "button" class = "btn btn-primary">Add task</button>
-    <h2>Tasks in "List 1"</h2>
-    <ul class="list-group list-group-flush row">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BFDjango TODO</a>
+    </nav>
+
+    <ul class="list-group list-group-flush row", style="padding-left: 30px">
+        <li class="list-group-item col-xs-6" style="height: 60px">
+            <div class="row"><button type="button" class="btn btn-primary">Add task</button></div>
+        </li>
+        <li class="list-group-item col-xs-6" style="height: 60px">
+            <div class="row"><h1>Tasks in "List 1"</h1></div>
+        </li>
         <li class="list-group-item col-xs-6" style="height: 60px">
             <div class="row">
-            <div class="col">Task</div>
-            <div class="col">Created</div>
-            <div class="col">Due on</div>
-            <div class="col">Owner</div>
-            <div class="col">Status</div>
-            </div>
+            <div class="col"><b>Task</b></div>
+            <div class="col"><b>Created</b></div>
+            <div class="col"><b>Due on</b></div>
+            <div class="col"><b>Owner</b></div>
+            <div class="col"><b>Status</b></div>
         </li>
    
         <div>{{tasks}}</div>
@@ -25,13 +32,17 @@
                 <div class="col">{{Due}}</div>
                 <div class="col">{{Owner}}</div>
                 <div class="col"><button type="button" class="btn btn-primary">Done</button></div>
-                </div>
-            </li>x
+            </li>
 
         {% endfor %}
 
     </ul>
 
 
+
+    <div class="button-box col-lg-12" style="padding-top: 20px">
+        <a href="#" class="btn btn-warning" role="button">View completed tasks</a>
+        <a href="#" class="btn btn-danger" role="button">Delete this list</a>
+    </div>
 
 {% endblock %}
