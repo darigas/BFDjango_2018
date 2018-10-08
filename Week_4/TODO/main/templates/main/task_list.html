@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% block content %}
+	<ul class="list-group list-group-flush row", style="padding-left: 20px">
+		<li class="list-group-item col-xs-6" style="height: 60px; width: 1300px">
+            <div class="row">
+            <div class="col"><b>Task</b></div>
+            <div class="col"><b>Created</b></div>
+            <div class="col"><b>Due on</b></div>
+            <div class="col"><b>Owner</b></div>
+            <div class="col"><b>Delete</b></div>
+            <div class="col"><b>Mark</b></div>
+        </li>
+
+        {% for task in tasks %}
+            <li class="list-group-item col-xs-6" style="height: 60px; width: 1300px">
+                <div class="row">
+                <div class="col">{{ task.name }}</div>
+                <div class="col">{{ task.created}}</div>
+                <div class="col">{{ task.due_on }}</div>
+                <div class="col">{{ task.owner }}</div>
+                <div class="col"><a href="{% url 'delete_task' task.id %}"><button type="button" class="btn btn-primary">Delete</button></a></div>
+                <div class="col"><a href="{% url 'add_to_completed' task.id %}"><button type="button" class="btn btn-primary">Done</button></a></div>
+            </li>
+        {% endfor %}
+	</ul>
+
+    <div class="buttons", style="padding-top: 20px; padding-left: 20px">
+        <a href="{% url 'completed_list' %}" class="btn btn-warning" role="button">View completed tasks</a>
+        <a href="{% url 'delete_list' %}" class="btn btn-danger" role="button">Delete this list</a>
+   </div>
+{% endblock %}
