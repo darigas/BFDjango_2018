@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <a href="{% url 'add_new_task' %}"><button type="button" class="btn btn-primary">Add task</button></a>
+    <table style="width: 100%; border-collapse: collapse; font-family: 'Alegreya'; font-size: 25px">
+        <tr style="height: 50px">
+            <th>Task</th>
+            <th>Created</th>
+            <th>Due on</th>
+            <th>Owner</th>
+            <th>Delete</th>
+        </tr>
+        {% for task in tasks %}
+            {% if task.mark == True %}
+                <tr style="height: 50px">
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.created}}</td>
+                    <td>{{ task.due_on }}</td>
+                    <td>{{ task.owner }}</td>
+                    <td><a href="{% url 'delete_completed_task' task.id %}"><button type="button" class="btn btn-primary">Delete</button></a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    
+    <div class="buttons", style="padding-top: 20px; padding-left: 20px">
+        <a href="{% url 'task_list' %}" class="btn btn-warning" role="button">View uncompleted tasks</a>
+        <a href="{% url 'delete_list' %}" class="btn btn-danger" role="button">Delete this list</a>
+   </div>
+{% endblock %}
