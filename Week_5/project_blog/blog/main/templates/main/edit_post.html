@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+{% block content %}
+	<h1 style="font-family: 'K2D'; font-size: 30px">Edit post</h1>
+     <form method="POST" class="post-form">
+     	{% csrf_token %}
+        <table style="font-size: 20px; font-family: 'K2D'">{{ form }}</table>
+        <input type="submit" class="btn btn-primary" value="Submit" style="font-size: 20px; font-family: 'K2D">
+     </form>
+{% endblock %}
