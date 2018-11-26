@@ -3,7 +3,7 @@
 	<a href="{% url 'add_post' %}"><button class="btn btn-primary" style="font-size: 20px; font-family: 'K2D">Add post</button></a>
 	{% for post in posts %}
 		<p style="font-size: 20px; font-family: 'K2D'">{{ post.created }}</p>
-		<p style="font-size: 20px; font-family: 'K2D'"><a href="{% url 'edit_post' post.id %}">{{ post.title }}</a><a href="{% url 'delete_post' post.id %}"><button class="btn" style="margin-left: 10px"><i class="fa fa-trash"></i></button></a><button class="btn" style="margin-left: 10px"><i class="fa fa-pencil"></i></button></p>
+		<p style="font-size: 20px; font-family: 'K2D'"><a href="{% url 'edit_post' post.id %}">{{ post.title }}</a><a href="{% url 'delete_post' post.id %}"><button class="btn" style="margin-left: 10px"><i class="fa fa-trash"></i></button></a><button class="btn" style="margin-left: 10px"><i class="fa fa-pencil"></i></button><button><a href="{% url 'add_comment' %}">Detail</button></a></p>
 		<p style="font-size: 20px; font-family: 'K2D'">{{ post.text }}</p>
 	{% endfor %}
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 def posts_list(request):
@@ -53,4 +53,22 @@ def edit_post(request, post_id):
 
 def home(request):
 	return render(request, 'main/home.html')
+
+@login_required
+def add_comment(request, post_id):
+	post = Post.objects.get(pk = post_id)
+	if request.method == 'POST':
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit = False)
+			comment.comment_id = post
+			comment.save()
+			return redirect('post_detail', post_id = post.pk)
+	else:
+		form = CommentForm()
+	return render(request, 'main/add_comment.html', {'form' : form})
+
+def podt_detail(request, post_id):
+	post = Post.objects.get(pk = post_id)
+	return render(request, 'main/post_detail.html', {'post' : post})
 

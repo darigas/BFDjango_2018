@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>{{ object.title }}</p>
+    <p>{{ object.created }}</p>
+    <p>{{ object.text }}</p>
+    <p>{{ object.id }}</p>
+    <a href="{% url 'comment_create' pk=object.pk %}"><button>Write Comment</button></a>
+
+    {% for comment in object.comments.all %}
+        <p>{{ comment.created }}</p>
+        <p>{{ comment.text }}</p>
+        <p>{{ comment.comment_id }}</p>
+        <a href="{% url 'comment_delete' comment.id %}"><button>Delete Comment</button></a>
+    {% endfor %}
+{% endblock %}

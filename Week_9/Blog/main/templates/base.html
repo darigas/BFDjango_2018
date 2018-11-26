@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+
+    <button><a href="{% url 'post_create' %}">Create Post</a></button>
+    <button><a href="{% url 'post_list' %}">Posts</a></button>
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
